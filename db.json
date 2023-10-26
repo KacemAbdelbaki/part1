@@ -1,0 +1,44 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "content": "HTML is easy",
+      "important": true
+    },
+    {
+      "id": 2,
+      "content": "Browser can execute only JavaScript",
+      "important": false
+    },
+    {
+      "id": 3,
+      "content": "GET and POST are the most important methods of HTTP protocol",
+      "important": true
+    },
+    {
+      "id": 4,
+      "content": "hello world!!",
+      "important": true
+    },
+    {
+      "content": "this is my new project",
+      "important": false,
+      "id": 5
+    },
+    {
+      "content": "with react, vite and axios at the moment",
+      "important": true,
+      "id": 6
+    },
+    {
+      "content": "sui",
+      "important": false,
+      "id": 7
+    },
+    {
+      "content": "help me im under the water",
+      "important": true,
+      "id": 8
+    }
+  ]
+}
