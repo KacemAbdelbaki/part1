@@ -1,6 +1,9 @@
 import express from 'express'
+import cors from 'cors'
+
 const app = express()
 app.use(express.json())
+app.use(cors());
 
 let notes = [
     {
@@ -19,10 +22,6 @@ let notes = [
       important: true
     }
 ]
-
-app.get('/', (req,res) => {
-    res.send('<h1>Hello World!</h1>')
-})
 
 app.get('/api/notes', (req, res) => {
     res.json(notes)
@@ -56,8 +55,6 @@ app.post('/api/notes/update/:id', (req,res)=>{
     else
         res.status(404).end()
 })
-
-//comment
 
 const PORT = 3001
 app.listen(PORT)

@@ -1,5 +1,4 @@
 import { useState,useEffect } from "react"
-import axios from 'axios'
 import noteService from '../services/notes'
 
 const AppV2 = () =>{
@@ -17,20 +16,19 @@ const AppV2 = () =>{
             })
             
     } 
-
     useEffect(hook,[])
 
     const addNote = (event) =>{
         event.preventDefault() 
         const noteObj = {
+            id: notes.length+1,
             content: newNote,
             important: Math.random() > 0.5,
         }
         noteService
             .create(noteObj)
             .then(response => {
-                console.log(response)
-                setNotes(notes.concat(response.data))
+                setNotes(response.data)
                 setNewNote("")
             })
     }
@@ -54,14 +52,23 @@ const AppV2 = () =>{
             })
     }
 
+    const delete_note = (id) => {
+        noteService
+            .delete_note(id)
+            .then(response => {
+                setNotes(response.data)
+            })
+    }
+
     return(
-        <div>
+        <center>
+            <div>
             <h1>Notes</h1>
             <ul>
                 {notes.map(note =>
                     <li key={note.id}>
                         {note.content} <br/>
-                        <button onClick={() => toggleImportance(note)}>{label(note)}</button>
+                        <button onClick={() => toggleImportance(note)}>{label(note)}</button> <button onClick={() => delete_note(note.id)}>Delete</button>
                     </li>
                 )}
             </ul>
@@ -74,6 +81,7 @@ const AppV2 = () =>{
                 
             </div>
         </div>
+        </center>
     )
 }   
 
