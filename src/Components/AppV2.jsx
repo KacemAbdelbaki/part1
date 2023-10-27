@@ -61,8 +61,7 @@ const AppV2 = () =>{
     }
 
     return(
-        <center>
-            <div>
+        <div>
             <h1>Notes</h1>
             <ul>
                 {notes.map(note =>
@@ -77,11 +76,7 @@ const AppV2 = () =>{
                 <input value={newNote} onChange={handleNewNote} />
                 <button type="Submit">Add</button>
             </form>
-            <div>
-                
-            </div>
         </div>
-        </center>
     )
 }   
 
