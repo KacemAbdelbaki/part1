@@ -1,30 +1,16 @@
 import express from 'express'
 import cors from 'cors'
+import Note from './mongo.js'
+
 
 const app = express()
 app.use(express.json())
 app.use(cors());
 
-let notes = [
-    {
-      id: 1,
-      content: "HTML is easy",
-      important: true
-    },
-    {
-      id: 2,
-      content: "Browser can execute only JavaScript",
-      important: false
-    },
-    {
-      id: 3,
-      content: "GET and POST are the most important methods of HTTP protocol",
-      important: true
-    }
-]
-
 app.get('/api/notes', (req, res) => {
-    res.json(notes)
+    Note.find({}).then(notes => {
+        res.json(notes)
+    })
 })
 
 app.get('/api/notes/read/:id', (req,res)=>{
@@ -41,8 +27,13 @@ app.get('/api/notes/delete/:id', (req,res)=>{
 })
 
 app.post('/api/notes/create', (req,res)=>{
-    notes = notes.concat(req.body)
-    res.json(notes)
+    const note = new Note({
+        content: req.body.content,
+        important: req.body.important
+    })
+    note.save().then(savedNote => {
+        res.json(savedNote)
+    })
 })
 
 app.post('/api/notes/update/:id', (req,res)=>{

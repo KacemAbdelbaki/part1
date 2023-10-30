@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-
-
 const url = 'http://localhost:3001/api/notes'
 
 const getAll = () =>{
@@ -13,7 +11,6 @@ const create = (obj) =>{
 const update = (id, obj) =>{
     return axios.put(`${url}/update/${id}`, obj)
 }
-
 const delete_note = (id) =>{
     return axios.get(`${url}/delete/${id}`)
 }

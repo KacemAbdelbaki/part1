@@ -7,7 +7,6 @@ const AppV2 = () =>{
     const [newNote, setNewNote] = useState('')
     
     const hook=() => {
-        console.log('effect')
         noteService
             .getAll()
             .then(response => {
@@ -21,7 +20,6 @@ const AppV2 = () =>{
     const addNote = (event) =>{
         event.preventDefault() 
         const noteObj = {
-            id: notes.length+1,
             content: newNote,
             important: Math.random() > 0.5,
         }
